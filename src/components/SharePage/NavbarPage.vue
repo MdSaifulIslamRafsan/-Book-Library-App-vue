@@ -4,7 +4,7 @@
       <!-- Logo -->
       <RouterLink to="/"
          class="lg:absolute max-lg:left-10 lg:top-2/4 lg:left-2/4 lg:-translate-x-1/2 lg:-translate-y-1/2">
-        <img src="https://readymadeui.com/readymadeui.svg" alt="logo" class="w-36" />
+        <img src="https://i.ibb.co.com/SrhGQKG/logo-search-grid-2x.png" alt="logo" class="w-20" />
       </RouterLink>
 
       <!-- Collapsible Menu -->
@@ -23,22 +23,28 @@
         <ul class="lg:flex lg:gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
           <li class="mb-6 hidden max-lg:block">
             <RouterLink to="/">
-              <img src="https://readymadeui.com/readymadeui.svg" alt="logo" class="w-36" />
+              <img src="https://i.ibb.co.com/SrhGQKG/logo-search-grid-2x.png" alt="logo" class="w-20" />
             </RouterLink>
           </li>
-          <li v-for="(item, index) in menuItems" :key="index" class="max-lg:border-b max-lg:py-3 px-3">
+          <li v-for="(item, index) in menuItems" :key="index" class="max-lg:border-b max-lg:py-3 px-1">
           
-            <RouterLink :to="item.link" :class="['hover:text-[#007bff]','block font-semibold text-[15px]']">{{ item.name }}</RouterLink>
+            <RouterLink  :to="item.link" :class="['hover:text-[#007bff]','block font-semibold text-[15px]']">{{ item.name }}</RouterLink>
           </li>
         </ul>
       </div>
 
       <!-- Login and Signup -->
       <div class="flex items-center ml-auto space-x-6">
-        <button class="font-semibold text-[15px] border-none outline-none">
-          <RouterLink  to="/login" class="text-[#007bff] hover:underline">Login</RouterLink>
-        </button>
-        <button class="px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff]">Sign up</button>
+       
+          <RouterLink :class="[
+      'px-4 py-2 text-sm rounded-sm font-bold border-2 border-[#007bff] transition-all ease-in-out duration-300 bg-[#007bff] text-white',
+      $route.path === '/login' && ' !text-white'
+    ]"  to="/login">Login</RouterLink>
+       
+       
+          <RouterLink  :class="[
+      'px-4 py-2 text-sm rounded-sm font-bold border-2 border-[#007bff] text-[#007bff] transition-all ease-in-out duration-300'
+    ]" to="/register">Sign up</RouterLink>
         
         <!-- Open Menu Button -->
         <button @click="toggleMenu" class="lg:hidden">
@@ -52,20 +58,30 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router';
+import {useRoute , RouterLink } from 'vue-router';
 
 export default {
+  setup() {
+    const route = useRoute();
+    return {
+      route,
+    };
+  },
   data() {
     return {
       isMenuOpen: false,
       menuItems: [
         { name: 'Home', link: '/'},
         { name: 'About', link: '/about'},
+        { name: 'Library', link: '/library'},
+        { name: 'AddBook', link: '/addBook'},
+        { name: 'Contact', link: '/contact'},
         
       ],
     };
   },
   methods: {
+
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },
@@ -73,6 +89,3 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Scoped styles here if necessary */
-</style>
