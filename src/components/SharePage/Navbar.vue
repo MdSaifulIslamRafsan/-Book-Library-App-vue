@@ -34,16 +34,16 @@
       </div>
 
       <!-- Login and Signup -->
-      <div class="flex items-center ml-auto space-x-6">
+      <div class="flex items-center ml-auto space-x-2 sm:space-x-6">
        
           <RouterLink :class="[
-      'px-4 py-2 text-sm rounded-sm font-bold border-2 border-[#007bff] transition-all ease-in-out duration-300 bg-[#007bff] text-white',
+      'sm:px-4 px-2 py-2 text-sm rounded-sm font-bold border-2 border-[#007bff] transition-all ease-in-out duration-300 bg-[#007bff] text-white',
       $route.path === '/login' && ' !text-white'
     ]"  to="/login">Login</RouterLink>
        
        
           <RouterLink  :class="[
-      'px-4 py-2 text-sm rounded-sm font-bold border-2 border-[#007bff] text-[#007bff] transition-all ease-in-out duration-300'
+      'sm:px-4 px-2 py-2 text-sm rounded-sm font-bold border-2 border-[#007bff] text-[#007bff] transition-all ease-in-out duration-300'
     ]" to="/register">Sign up</RouterLink>
         
         <!-- Open Menu Button -->
